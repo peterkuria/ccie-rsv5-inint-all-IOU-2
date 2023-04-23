@@ -86,7 +86,10 @@ top
 run show ospf neighbor
 run show route
 
+To enable OSPF on all interfaces
 
+set protocals ospf area 0 network 192.168.2.0/24
+run show ip ospf nei
 
 # top edit protocols ospf
 # show
