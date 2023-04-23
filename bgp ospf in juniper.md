@@ -36,3 +36,45 @@ commit
 monitor traffic interface any filer icmp
 
 show ip ro | match B
+
+## Redistribution with policy
+Assume we have the following network prefix(192.168.10.0/24) installed on our routing table: run show route: 
+RA#
+top edit policy-options policy-statement DIRECT-EXPORT
+set term 1 from protocal direct
+set term 1 from route-filter 192.168.10.0/24 exact
+set term 1 then accept
+// implicitely deny others
+set term REJECT then reject 
+show
+top edit policy-options
+top edit protocals bgp
+edit group IBGP-SERVERS
+set export DIRECT-EXPORT
+top
+commit
+
+show | display set
+// copy and edit config and load to Router RB for mutual prefix advertisement
+
+##  On Route B we should now be able to view the new advertised route via bgp
+
+RB#
+
+set policy-options policy-statement DIRECT-EXPORT term 1 from protocal direct
+set policy-options policy-statement DIRECT-EXPORT term 1 from route-filter 192.168.20.0/24 exact
+set policy-options policy-statement DIRECT-EXPORT term then accept
+set policy-options policy-statement DIRECT-EXPORT term  REJECT then reject
+
+run show interfaces descriptions
+run show route
+top edit policy-options
+top edit protocals bgp group IBGP-SERVERS  
+set export DIRECT-EXPORT
+  
+commit
+run show route
+
+RA#
+Test connectivity from site A
+run ping 192.168.20.1 source 192.168.10.1
