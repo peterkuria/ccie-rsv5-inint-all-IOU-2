@@ -127,3 +127,17 @@ show isis adjaceny
 show bgp summary
 show ospf neighbor
 
+
+i have the give me a clean aggegate summary for advertising to bgp
+
+172.16.0.6/30
+172.16.0.5/30
+172.16.0.1/30
+172.16.0.2/30
+
+Here is the updated ip addressing
+Router-1 is connected to router-r2 on ge0/0/0 on 172.16.0.6/30.router-2 hs three interaces, ge0/0/0 on 172.16.0.5/30 linking to router 1; ge0/0/0/1 on 192.168.1.254 connecting to a default rout 0.0.0.0/0 to the internet;
+and xe0/0/0/35 on 172.16.0.1/30 linking to router-3. router-3 links to router-2 on xe0/1/3 on 172.16.0.2/30
+can we have the full juniper configuration to redistribute as per the above requirement
+
+
