@@ -199,7 +199,7 @@ conf t
   router bgp 4.4
   neighbor 155.1.45.5 transport connection-mode passive
   neighbor 155.1.45.5 update-source lo0
-  neighbor 155.1.45.5 ttl-security 1
+  neighbor 155.1.45.5 ttl-security 2
   end
 
 
@@ -210,7 +210,7 @@ conf t
   neighbor 155.1.45.4 update-source lo0
 
   neighbor 155.1.45.4 transport connection-mode passive
-  neighbor 155.1.45.4 ttl-security 1
+  neighbor 155.1.45.4 ttl-security 2
   end
 
 // ipv4 address
@@ -313,7 +313,7 @@ show ip bgp
 show ip route 155.1.5.0
 
 
-// how do we route to the next-hop: BGP does not tell youhow, its IGP role
+// how do we route to the next-hop: BGP does not tell you how, its IGP role
 show ip route 150.1.5.5
 
 // view route on CEF fib table
@@ -407,12 +407,12 @@ R5#
 show ip bgp
 show ip bgp regex ^[0-0]+
 
-## DEbugging
+## Debugging
 show run | s bgp
 debug ip bgp updates
 
 
-from RR client try to ping an external destinaiton- sourcing from lo0
+from RR client try to ping an external destination- sourcing from lo0
 
 R4# ping 15
 
@@ -473,7 +473,7 @@ BGP manual summarisation
 
 bgp auto-summary
 
-You can apply summarisation anyweher as long as the subnet exists in the BGP table(required on routing table)
+You can apply summarisation anywhere as long as the subnet exists in the BGP table(required on routing table)
 aggregate-address [network] [mask] [args]
 
 Ip routing | Cisco Ios routing: BGP command reference

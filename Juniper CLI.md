@@ -1,4 +1,9 @@
 > OPERATIONAL MODE
+
+orion 
+sol.wananchi.com/orion
+
+
 # configuration mode
 
 
@@ -22,7 +27,7 @@ password
 run show interfaces terse
 show interfaces descriptions
 
-show interaces terse  => show int bri
+show interfaces terse  => show int bri
 // to commit only your config
 configure private 
 

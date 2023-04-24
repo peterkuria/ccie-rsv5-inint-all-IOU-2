@@ -40,6 +40,8 @@ show ip ro | match B
 ## Redistribution with policy
 Assume we have the following network prefix(192.168.10.0/24) installed on our routing table: run show route: 
 RA#
+
+
 top edit policy-options policy-statement DIRECT-EXPORT
 set term 1 from protocal direct
 set term 1 from route-filter 192.168.10.0/24 exact
@@ -65,10 +67,6 @@ set policy-options policy-statement DIRECT-EXPORT term 1 from protocal direct
 set policy-options policy-statement DIRECT-EXPORT term 1 from route-filter 192.168.20.0/24 exact
 set policy-options policy-statement DIRECT-EXPORT term then accept
 set policy-options policy-statement DIRECT-EXPORT term  REJECT then reject
-
-
-
-
 
 run show interfaces descriptions
 run show route

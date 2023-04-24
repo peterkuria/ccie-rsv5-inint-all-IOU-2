@@ -2114,6 +2114,7 @@ continue
 
 Sure, here is the updated Juniper configuration with loop prevention and using router-id for BGP:
 
+vbnet
 
 ## Configure OSPF on Router-1 and Router-2
 set interfaces ge-0/0/0 unit 0 family inet address 10.1.1.1/30
@@ -2298,8 +2299,8 @@ route-map OSPF-to-BGP permit 10
 !
 And here's the continuation of the configuration for the Juniper routers:
 
+csharp
 
-```conf
 protocols {
     ospf {
         area 0.0.0.0 {
@@ -2364,9 +2365,12 @@ Note that the configuration for both the Cisco and Juniper routers have been mod
 
 
 
-## Here's the configuration using set commands:
 
-```
+can i have the above juniper config in the format using set for easier of copy paste?
+Sure! Here's the configuration using set commands:
+
+vbnet
+
 set interfaces ge-0/0/0 unit 0 family inet address 10.0.12.1/30
 set interfaces ge-0/0/1 unit 0 family inet address 10.0.13.1/30
 set interfaces ge-0/0/2 unit 0 family inet address 172.16.10.1/24
@@ -2413,7 +2417,7 @@ set protocols bgp group EBGP peer-as 2
 set protocols bgp group EBGP multihop ttl 2
 set protocols bgp group EBGP export redistribute-to-bgp
 set protocols bgp group EBGP import bgp-to-ospf
-```
+
 
 
 
