@@ -1,3 +1,5 @@
+jUNIPER MX204 routers
+
 # Set hostname and enable SSH
 set system host-name router-1
 set system services ssh root-login allow
@@ -148,3 +150,8 @@ set policy-options policy-statement import-from-ospf term term1 then accept
 
 # Set routing options
 set routing-options static route 0.0.0.0/0 next-hop 192.168.1.1
+
+
+
+R1#
+ping 
