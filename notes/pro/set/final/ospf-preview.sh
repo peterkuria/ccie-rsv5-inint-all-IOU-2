@@ -16,12 +16,12 @@ set protocols ospf area 0.0.0.0 interface lo0.0 passive
 # Set OSPF for router-r2
 set protocols ospf area 0.0.0.0 interface ge-0/0/0.0
 set protocols ospf area 0.0.0.0 interface ge-0/0/0.1
-set protocols ospf area 0.0.0.0 interface xe-0/0/0/35.0
+set protocols ospf area 0.0.0.0 interface xe-0/0/0/35.
 
 # Set OSPF for router-r3
 set protocols ospf area 0.0.0.0 interface xe-0/1/3.0
 
-# Set BGP for router-r2
+# Set BGP for router-r2 (peer to router1 B)
 set protocols bgp group EBGP type external
 set protocols bgp group EBGP peer-as 65002
 set protocols bgp group EBGP neighbor 172.16.0.6 multihop ttl 2

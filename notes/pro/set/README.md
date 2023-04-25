@@ -210,6 +210,8 @@ policy-options {
         }
     }
 }
+
+
 Note: The updated IP addressing scheme has been incorporated into the configuration, and the BGP cluster-id has been removed since it's not necessary with the current setup. Additionally, templates for route reflectors and clients have not been included, but can be added if needed. The iBGP peering has also been set to source from loopback addresses, while the eBGP peering uses directly connected links.
 
 
@@ -221,10 +223,7 @@ Router2 is the route reflector as above
 
 Understood. Here is the updated configuration for Router-2 as the Route Reflector:
 
-sql
-Copy code
-
-
+# r2
 set groups EBGP neighbors 10.0.0.1 peer-as 1
 set groups EBGP neighbors 10.0.0.1 multihop ttl 2
 set groups EBGP neighbors 10.0.0.1 import-policy bgp-in

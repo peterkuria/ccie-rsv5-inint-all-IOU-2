@@ -5,7 +5,7 @@ set interfaces ge-0/0/0 unit 0 family inet address 172.16.0.6/30
 set routing-options static route 192.168.1.0/24 next-hop 172.16.0.5
 set routing-options static route 192.207.172.51/32 next-hop 172.16.0.5
 
-For Router-2:
+For Router-2(B):
 set interfaces ge-0/0/0 unit 0 family inet address 172.16.0.5/30
 set interfaces xe-0/0/0/35 unit 0 family inet address 172.16.0.1/30
 set interfaces xe-0/1/3 unit 0 family inet address 172.16.0.2/30
@@ -19,27 +19,32 @@ set routing-options static route 192.207.172.51/32 next-hop 172.16.0.2
 
 
 ## OSPF AND BGP 
-
 router-r1
 set interfaces ge-0/0/0 unit 0 family inet address 172.16.0.6/30
+
 set interfaces ge-0/0/0 unit 0 family inet address 172.16.0.5/30
 set interfaces xe-0/0/0/35 unit 0 family inet address 172.16.0.1/30
+
+R3
 set interfaces xe-0/1/3 unit 0 family inet address 172.16.0.2/30
-set interfaces ge-0/0/0 unit 0 family inet address 192.168.1.254/24
+
+# set interfaces ge-0/0/0 unit 0 family inet address 192.168.1.254/24
 
 set routing-options router-id 1.1.1.1
+
 
 set protocols bgp group ebgp type external
 set protocols bgp group ebgp peer-as 2
 set protocols bgp group ebgp neighbor 172.16.0.5
 set protocols bgp group ebgp family inet unicast
 
+## Router r2
 set protocols bgp group ibgp type internal
 set protocols bgp group ibgp local-address 192.168.1.254
 set protocols bgp group ibgp family inet unicast
 set protocols bgp group ibgp export ibgp-to-ospf
 set protocols bgp group ibgp neighbor 172.16.0.6
-set protocols bgp group ibgp neighbor 172.16.0.2
+# set protocols bgp group ibgp neighbor 172.16.0.2
 
 set protocols ospf area 0.0.0.0 interface ge-0/0/0.0 interface-type p2p
 set protocols ospf area 0.0.0.0 interface xe-0/0/0/35.0 interface-type p2p
@@ -66,10 +71,24 @@ set protocols bgp group ibgp import bgp-to-ospf
 set protocols bgp group ibgp export ospf-to-bgp
 
 
+
+
+# Set OSPF for router-1
+set protocols ospf area 0.0.0.0 interface ge-0/0/0.0
+set protocols ospf area 0.0.0.0 interface lo0.0 passive
+
+# Set OSPF for router-r2
+set protocols ospf area 0.0.0.0 interface ge-0/0/0.0
+# set protocols ospf area 0.0.0.0 interface ge-0/0/0.1
+# set protocols ospf area 0.0.0.0 interface xe-0/0/0/35.
+
+# Set OSPF for router-r3 - no ospf
+# set protocols ospf area 0.0.0.0 interface xe-0/1/3.0
+
+
 # optimise ospf
 set protocols ospf interface ge-0/0/0 hello-interval 2
 set protocols ospf interface ge-0/0/0 dead-interval 8
-
 
 # router r2
 
