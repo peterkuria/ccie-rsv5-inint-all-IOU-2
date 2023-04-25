@@ -55,9 +55,9 @@ Based on the configuration provided earlier, it appears that mutual redistributi
 
 
 can we have the final script now using the set commands?  any further optimisation is welcome. 
+
+
 Certainly! Here's the final script for Juniper routers with the updated IP addressing and loop filtering:
-
-
 
 set interfaces ge-0/0/0 unit 0 family inet address 172.16.0.6/30
 set interfaces ge-0/0/0 unit 0 family inet address 172.16.0.5/30
@@ -392,8 +392,6 @@ Verify the static routes are installed in the routing table using the "show rout
 Verify bidirectional connectivity between the routers using ping and traceroute commands sourced from the loopback interfaces.
 Verify that the static routes are being used to forward traffic between the routers by checking the routing table on each router.
 Once you have verified that the IP routing is working correctly, you can proceed with configuring OSPF and BGP.
-
-
 
 
 

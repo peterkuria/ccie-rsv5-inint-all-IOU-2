@@ -1,3 +1,8 @@
+
+Verify the physical link connectivity by checking the interface status using: 
+
+show interfaces terse
+
 To test connectivity from Router-1 to Router-r3:
 
 Router-1> 
